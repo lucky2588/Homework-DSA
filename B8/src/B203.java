@@ -10,6 +10,11 @@ public class B203 {
         n3.next = n4;
         n4.next = n5;
         PrintListNode(n1);
+        System.out.println("Remove , Excise 4 ");
+        n1 = removeElements(n1,4);
+        System.out.println("");
+        PrintListNode(n1);
+
     }
 
     public static void PrintListNode(ListNode head) {
@@ -38,16 +43,17 @@ public class B203 {
         }
 
     }
+
     public static ListNode removeElements(ListNode head, int val) {
         while (head != null && head.val == val) {
             head = head.next;
         }
-        ListNode nodeCurr = head;
-        while (nodeCurr != null && nodeCurr.next != null) {
-            if (nodeCurr.next.val == val) { // phần từ sau nó trỏ đến có giá trị là Val
-                nodeCurr.next = nodeCurr.next.next; // trỏ pev dến phần tử sau phần tử bị xóa (Giống Xóa phần tử dựa theo index)
+        ListNode CurrNode = head;
+        while (CurrNode != null && CurrNode.next != null) {
+            if (CurrNode.next.val == val) {
+                CurrNode.next = CurrNode.next.next;
             } else {
-                nodeCurr = nodeCurr.next; // Duyêt phần tử tiếp theo
+                CurrNode = CurrNode.next;
             }
         }
         return head;
